@@ -1,17 +1,19 @@
+import moment from 'moment/moment'
+
 import { FC } from 'react'
 
 import { IconSydney } from '@/app/shared/icons'
+import { ITourInfo } from '@/app/shared/interfaces/interfaces'
 
 import styles from './selected-card.module.scss'
 
 //interface
 interface ISelectedCard {
-  cityName: string
-  startDate: string
+  selectedTour: ITourInfo
 }
 
 //component
-export const SelectedCardComponent: FC<Readonly<ISelectedCard>> = ({ cityName, startDate }) => {
+export const SelectedCardComponent: FC<Readonly<ISelectedCard>> = ({ selectedTour }) => {
   //return
   return (
     <div className={styles.selected_card}>
@@ -22,8 +24,10 @@ export const SelectedCardComponent: FC<Readonly<ISelectedCard>> = ({ cityName, s
 
       <div className={styles.selected_card__content}>
         <div className={styles.selected_card__weather}></div>
-        <div className={styles.selected_card__title}>{cityName}</div>
-        <div className={styles.selected_card__countdown}>{startDate}</div>
+        <div className={styles.selected_card__title}>{selectedTour?.city.name}</div>
+        <div className={styles.selected_card__countdown}>
+          {moment(selectedTour?.start_date).format('DD.MM.YYYY')}
+        </div>
       </div>
     </div>
   )

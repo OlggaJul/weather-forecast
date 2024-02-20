@@ -1,10 +1,12 @@
 import Image from 'next/image'
 
+import moment from 'moment/moment'
+
 import { FC } from 'react'
 
 import { ImageBerlin } from '@/app/shared/images'
 import { ITourInfo } from '@/app/shared/interfaces/interfaces'
-import { useGlobalStore } from '@/app/shared/stores'
+import { useGlobalStore } from '@/app/shared/stores/zustand'
 
 import styles from './trip-card.module.scss'
 
@@ -17,11 +19,14 @@ interface ITripCard {
 export const TripCardComponent: FC<Readonly<ITripCard>> = ({ trip }) => {
   const handleChangeGlobalStore = useGlobalStore((state) => state.handleChangeGlobalStore)
   const selectedTourId = useGlobalStore((state) => state.selectedTourId)
+
   //return
   return (
     <div
-      className={`${styles.trip_card} ${selectedTourId === trip.city.id && styles.active}`}
-      onClick={() => handleChangeGlobalStore({ selectedTourId: trip.city.id })}
+      className={`${styles.trip_card} ${selectedTourId === trip.city.id ? styles.active : ''}`}
+      onClick={() => {
+        handleChangeGlobalStore({ selectedTourId: trip.city.id })
+      }}
     >
       <div className={styles.trip_card__photo_wrapper}>
         <Image
@@ -42,7 +47,8 @@ export const TripCardComponent: FC<Readonly<ITripCard>> = ({ trip }) => {
         <p className={styles.trip_card__title}>{trip.city.name}</p>
 
         <p className={styles.trip_card__dates}>
-          {trip.start_date.format('DD.MM.YYYY')}-{trip.end_date.format('DD.MM.YYYY')}
+          {moment(trip?.start_date)?.format('DD.MM.YYYY')}-
+          {moment(trip?.end_date)?.format('DD.MM.YYYY')}
         </p>
       </div>
     </div>

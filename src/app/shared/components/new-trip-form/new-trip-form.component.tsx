@@ -1,12 +1,14 @@
 'use client'
 
 import moment, { Moment } from 'moment/moment'
+import { uid } from 'uid'
 
 import { FC } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
 import { ButtonComponent, DatePicker, SelectComponent } from '@/app/shared/components'
-import { useModalStore } from '@/app/shared/stores'
+import { ITourInfo } from '@/app/shared/interfaces/interfaces'
+import { useGlobalStore, useModalStore } from '@/app/shared/stores/zustand'
 
 import styles from './new-trip-form.module.scss'
 
@@ -17,6 +19,8 @@ interface INewTripForm {}
 export const NewTripFormComponent: FC<Readonly<INewTripForm>> = () => {
   const { handleSubmit, control, setError } = useForm()
   const handleChangeModalStore = useModalStore((state) => state.handleChangeModalStore)
+  const handleChangeGlobalStore = useGlobalStore((state) => state.handleChangeGlobalStore)
+  const tours = useGlobalStore((state) => state.tours)
 
   const checkDateValidity = (startDate: Moment, endDate: Moment) => {
     if (startDate.diff(moment(), 'hours') > 360) {
@@ -44,7 +48,15 @@ export const NewTripFormComponent: FC<Readonly<INewTripForm>> = () => {
   }
   const submitForm = (formValues: any) => {
     checkDateValidity(formValues.start_date, formValues.end_date)
-    // console.log(formValues)
+    const newTrip: ITourInfo = {
+      city: {
+        name: formValues.city,
+        id: uid(),
+      },
+      start_date: formValues.start_date,
+      end_date: formValues.end_date,
+    }
+    handleChangeGlobalStore({ tours: [...tours, newTrip] })
   }
 
   //return

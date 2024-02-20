@@ -1,7 +1,13 @@
 .tours {
+  width: 100%;
   display: grid;
   grid-template-rows: auto 1fr;
-  grid-gap: var(--gap-small);
+  grid-template-columns: 1fr auto;
+  grid-gap: var(--gap-small) var(--gap-medium-small);
+
+  &__list {
+    grid-row: 2;
+  }
 
   &__title {
     font-size: 1.8rem;
@@ -9,8 +15,31 @@
     font-weight: 600;
   }
 
-  &__trip_cards {
+  &__cards {
+    grid-row: 2;
+    width: 100%;
     display: flex;
     gap: var(--gap-medium);
+    overflow: scroll;
+  }
+
+  &__create_btn {
+    grid-row: 2;
+    grid-column: 2;
+    width: 20rem;
+    aspect-ratio: 1;
+    border: none;
+    background-color: var(--border-color);
+
+    color: var(--font-color-primary);
+    text-transform: uppercase;
+
+    transition: background-color var(--transition), color var(--transition);
+    cursor: pointer;
+
+    @include hover {
+      background-color: var(--border-color-dark);
+      color: var(--font-color-secondary);
+    }
   }
 }

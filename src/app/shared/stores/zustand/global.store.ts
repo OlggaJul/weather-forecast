@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
 
+import { initTour } from '@/app/shared/constants'
 import { ITourInfo } from '@/app/shared/interfaces/interfaces'
 
 interface IState {
@@ -17,7 +18,7 @@ export const useGlobalStore = create<IStore>()(
   devtools(
     persist(
       (set) => ({
-        tours: [],
+        tours: [initTour],
         selectedTourId: '',
         handleChangeGlobalStore: (value) => set((state) => ({ ...state, ...value })),
       }),

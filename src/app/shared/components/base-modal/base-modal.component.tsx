@@ -2,7 +2,7 @@
 import { FC } from 'react'
 
 import { IconClose } from '@/app/shared/icons'
-import { useModalStore } from '@/app/shared/stores'
+import { useModalStore } from '@/app/shared/stores/zustand'
 
 import styles from './base-modal.module.scss'
 

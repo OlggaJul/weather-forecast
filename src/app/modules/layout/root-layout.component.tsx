@@ -1,9 +1,10 @@
 'use client'
+import { HeaderComponent } from './elements'
+
 import { FC, ReactNode } from 'react'
 
-import { HeaderComponent } from '@/app/modules/layouts/root-layout/elements'
 import { BaseModalComponent } from '@/app/shared/components'
-import { useModalStore } from '@/app/shared/stores'
+import { useModalStore } from '@/app/shared/stores/zustand'
 
 import styles from './root-layout.module.scss'
 
@@ -18,9 +19,7 @@ const RootLayoutComponent: FC<Readonly<IRootLayoutComponent>> = ({ children }) =
   // return
   return (
     <body id={'body'} className={styles.root_layout}>
-      <div className={styles.root_layout__header}>
-        <HeaderComponent />
-      </div>
+      <HeaderComponent />
 
       <main className={styles.root_layout__inner}>{children}</main>
 

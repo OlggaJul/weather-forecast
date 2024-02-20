@@ -1,12 +1,14 @@
 .home {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: var(--gap-medium);
 
+  @include laptop {
+    grid-template-columns: 2fr 1fr;
+  }
 
   &__trip_list {
     display: grid;
     gap: var(--gap-medium);
   }
-
 }

@@ -1,6 +1,6 @@
 import { createApi } from '@reduxjs/toolkit/query/react'
 
-import baseQuery from '@/app/api/baseQuery'
+import baseQuery from '@/app/shared/stores/redux/baseQuery'
 
 export const weatherForecastApi = createApi({
   reducerPath: 'weatherForecast',
@@ -15,4 +15,9 @@ export const weatherForecastApi = createApi({
   }),
 })
 
-export const { useGetWeatherForecastQuery } = weatherForecastApi
+export const {
+  useGetWeatherForecastQuery,
+  util: { getRunningQueriesThunk: getRunningQueriesTrunkWeatherForecast },
+} = weatherForecastApi
+
+export const { getWeatherForecast } = weatherForecastApi.endpoints

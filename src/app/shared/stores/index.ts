@@ -1,2 +1,1 @@
-export * from './global.store'
-export * from './modal.store'
+export * from './zustand'

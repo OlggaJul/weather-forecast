@@ -15,12 +15,7 @@ interface ISelect {
   errorMessage?: string
 }
 
-const cities = [
-  { name: 'Lutsk', id: '1' },
-  { name: 'Lviv', id: '2' },
-  { name: 'Kyiv', id: '3' },
-  { name: 'Rivne', id: '4' },
-]
+const cities = ['Lutsk', 'Lviv', 'Kyiv', 'Rivne']
 
 //component
 export const SelectComponent: FC<Readonly<ISelect>> = ({
@@ -42,7 +37,7 @@ export const SelectComponent: FC<Readonly<ISelect>> = ({
           className={`${styles.select__field} ${value && styles.filled} ${isOptionsVisible && styles.opened}`}
           onClick={() => setIsOptionsVisible(!isOptionsVisible)}
         >
-          <p className={styles.select__selectedItem}>{value ? value.name : placeholder}</p>
+          <p className={styles.select__selectedItem}>{value ? value : placeholder}</p>
 
           <div className={`${styles.select__icon} ${isOptionsVisible && styles.opened}`}>
             <IconArrowDown />
@@ -62,9 +57,9 @@ export const SelectComponent: FC<Readonly<ISelect>> = ({
                   setIsOptionsVisible(false)
                 }}
                 className={styles.select__option}
-                key={city.id}
+                key={city}
               >
-                {city.name}
+                {city}
               </div>
             ))}
           </div>

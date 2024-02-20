@@ -1,9 +1,8 @@
 'use client'
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 
 import { ForecastComponent, SelectedCardComponent, ToursComponent } from '@/app/shared/components'
-import { initTour } from '@/app/shared/constants'
-import { useGlobalStore } from '@/app/shared/stores'
+import { useGlobalStore } from '@/app/shared/stores/zustand'
 
 import styles from './home.module.scss'
 
@@ -12,23 +11,23 @@ interface IHome {}
 
 //component
 export const HomeComponent: FC<Readonly<IHome>> = () => {
-  const handleChangeGlobalStore = useGlobalStore((state) => state.handleChangeGlobalStore)
+  const tours = useGlobalStore((state) => state.tours)
+  const selectedTourId = useGlobalStore((state) => state.selectedTourId)
 
-  useEffect(() => {
-    handleChangeGlobalStore({ tours: [initTour] })
-  }, [])
-
+  const selectedTourData = tours.find((item) => item.city.id === selectedTourId)
   //return
   return (
     <section className={`${styles.home} container`}>
       <div className={styles.home__trip_list}>
         <ToursComponent />
-        <ForecastComponent />
+        {selectedTourData && <ForecastComponent selectedTour={selectedTourData} />}
       </div>
 
-      <div className={styles.home__selected_trip}>
-        <SelectedCardComponent cityName={'Abu Dhabi'} startDate={'12.03.2024'} />
-      </div>
+      {selectedTourData && (
+        <div className={styles.home__selected_trip}>
+          <SelectedCardComponent selectedTour={selectedTourData} />
+        </div>
+      )}
     </section>
   )
 }
