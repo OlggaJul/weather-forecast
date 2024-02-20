@@ -1,0 +1,53 @@
+.button {
+  padding: .4rem 1.2rem;
+  font-size: 1.6rem;
+
+  border: 1px solid var(--color-violet);
+  border-radius: .4rem;
+  background-color: transparent;
+  color: var(--color-violet);
+
+  transition: color var(--transition), background-color var(--transition), border-color var(--transition);
+  cursor: pointer;
+
+  @include hover {
+    background-color: var(--color-violet);
+    color: var(--font-color-secondary);
+  }
+
+  &.filled {
+    background-color: var(--color-violet);
+
+    color: var(--font-color-secondary);
+
+    @include hover {
+      background-color: var(--color-violet-dark);
+      border-color: var(--color-violet-dark);
+    }
+  }
+
+  &.text {
+    background-color: var(--bg-color-primary);
+    color: var(--color-violet);
+    border-color: transparent;
+
+    @include hover {
+      background-color: var(--color-violet-light);
+    }
+  }
+
+  &.icon {
+    padding: .8rem;
+    border: none;
+
+    @include hover {
+      background-color: var(--color-violet-light);
+    }
+
+    & svg {
+      width: 2.4rem;
+      height: 2.4rem;
+    }
+  }
+}
+

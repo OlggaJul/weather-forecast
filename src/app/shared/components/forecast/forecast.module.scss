@@ -1,0 +1,16 @@
+.forecast {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-gap: var(--gap-small);
+
+  &__title {
+    font-size: 1.8rem;
+    line-height: 2rem;
+    font-weight: 600;
+  }
+
+  &__cards {
+    display: flex;
+    gap: var(--gap-small);
+  }
+}

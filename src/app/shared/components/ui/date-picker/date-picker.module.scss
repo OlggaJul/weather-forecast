@@ -1,0 +1,221 @@
+.date_picker {
+  position: relative;
+  display: grid;
+  font-size: 1.6rem;
+
+  &__field {
+    padding: .5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: var(--font-color-primary);
+    border: 1px solid var(--border-color);
+    border-radius: .4rem;
+
+    cursor: pointer;
+    transition: border-color var(--transitions);
+
+    @include hover {
+      border-color: var(--border-color-dark);
+    }
+
+    &.opened {
+      border-color: var(--border-color-dark);
+    }
+
+    &.filled {
+      border-color: var(--color-violet);
+    }
+  }
+
+  &__error {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    color: var(--error-color);
+  }
+
+  &__arrow {
+    border: none;
+    background-color: var(--bg-color-primary);
+    cursor: pointer;
+
+    & svg {
+      width: 2.4rem;
+      height: 2.4rem;
+    }
+
+    @include hover {
+      color: var(--color-violet);
+    }
+
+    &.arrow_next {
+      transform: rotate(-90deg);
+    }
+
+    &.arrow_prev {
+      transform: rotate(90deg);
+    }
+  }
+
+  &__icon {
+    transition: var(--transition);
+    cursor: pointer;
+
+    & svg {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    @include hover {
+      color: var(--color-violet);
+    }
+  }
+
+  &__actions_top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4.6rem;
+  }
+
+  &__actions_bottom {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--gap-medium-small);
+    height: 4.6rem;
+  }
+
+  &__period_select {
+    display: flex;
+    align-items: center;
+  }
+
+  &__btn {
+    cursor: pointer;
+    width: 2.4rem;
+    height: 2.4rem;
+    background-color: var(--picker-bg-color);
+    border: none;
+    border-radius: 0.4rem;
+
+    & svg {
+      width: 1.4rem;
+      height: 1.4rem;
+    }
+  }
+
+  &__background {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: #0000003f;
+  }
+
+  &__dropdown_full {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  &__dropdown {
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    left: 0;
+    top: calc(100% + 0.6rem);
+    padding: 0 2.2rem;
+
+    background-color: var(--bg-color-primary);
+    border: 1px solid var(--border-color-dark);
+    border-radius: .4rem;
+
+    font-size: 1.6rem;
+    text-align: inherit;
+
+    &__bg {
+      content: '';
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+  }
+
+  &__calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 0.4rem;
+  }
+
+  &__week_days {
+    margin-bottom: 0.5rem;
+    padding-bottom: .5rem;
+    grid-column: 1/8;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border-bottom: 1px solid var(--border-color);
+
+  }
+
+  &__day_of_week {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-violet)
+
+  }
+
+  &__day {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    aspect-ratio: 1;
+
+    font-size: 1.6rem;
+
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 50%;
+
+    transition: background var(--transition),
+    border-color var(--transition),
+    color var(--transition);
+
+    cursor: pointer;
+
+    @include hover {
+      background: var(--color-violet-light);
+      border-color: var(--color-violet-light);
+      color: var(--font-color-secondary);
+    }
+
+    &.today {
+      border-color: var(--color-violet);
+      color: var(--color-violet);
+    }
+
+    &.selected {
+      pointer-events: none;
+      background-color: var(--color-violet);
+      border-color: var(--color-violet);
+      color: var(--font-color-secondary);
+    }
+
+
+    &.disabled {
+      color: var(--border-color);
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+}

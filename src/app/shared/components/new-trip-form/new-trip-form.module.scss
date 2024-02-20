@@ -1,0 +1,28 @@
+.new_trip_form {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  grid-gap: var(--gap-small);
+
+  @include laptop {
+    grid-gap: var(--gap-medium);
+  }
+
+  &__inputs {
+    align-self: center;
+    display: grid;
+    grid-gap: var(--gap-small);
+
+    @include laptop {
+      grid-gap: var(--gap-medium);
+    }
+  }
+
+  &__buttons {
+    align-self: end;
+    display: flex;
+    gap: var(--gap-small);
+    align-items: center;
+    justify-content: flex-end;
+  }
+}

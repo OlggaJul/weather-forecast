@@ -1,0 +1,53 @@
+.input {
+
+  &__label {
+    font-size: 1.4rem;
+  }
+
+  &__wrapper {
+    padding: .5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: var(--font-color-primary);
+    border: 1px solid var(--border-color);
+    border-radius: .4rem;
+
+    @include hover {
+      border-color: var(--border-color-dark);
+    }
+  }
+
+  &__icon {
+    transition: var(--transition);
+    cursor: pointer;
+
+    & svg {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    @include hover {
+      color: var(--color-violet);
+    }
+  }
+
+  &__inner {
+    width: 100%;
+    padding: 0;
+
+    border: none;
+    background-color: transparent;
+    outline: none;
+
+    font-size: 1.6rem;
+    line-height: 2.24rem;
+  }
+
+  &__error {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    color: var(--error-color);
+  }
+}

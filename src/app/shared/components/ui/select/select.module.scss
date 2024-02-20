@@ -1,0 +1,96 @@
+.select {
+
+  &__label {
+    font-size: 1.4rem;
+  }
+
+  &__container {
+    position: relative;
+  }
+
+  &__error {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    color: var(--error-color);
+  }
+
+  &__field {
+    padding: .5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: var(--font-color-primary);
+    border: 1px solid var(--border-color);
+    border-radius: .4rem;
+
+    cursor: pointer;
+    transition: border-color var(--transitions);
+
+    @include hover {
+      border-color: var(--border-color-dark);
+    }
+
+    &.opened {
+      border-color: var(--border-color-dark);
+    }
+
+    &.filled {
+      border-color: var(--color-violet);
+    }
+  }
+
+  &__icon {
+    transition: transform var(--transition);
+
+    & svg {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    &.opened {
+      transform: rotate(180deg);
+    }
+
+    @include hover {
+      color: var(--color-violet);
+    }
+  }
+
+  &__options_container {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    top: 4rem;
+
+    display: grid;
+    grid-template-rows: 0fr;
+
+    border: 1px solid transparent;
+    border-radius: .4rem;
+
+    transition: grid-template-rows var(--transition), border-color var(--transition), background-color var(--transition);
+
+    &.visible {
+      grid-template-rows: 1fr;
+      background-color: var(--bg-color-primary);
+      border-color: var(--border-color-dark);
+    }
+  }
+
+  &__options_inner {
+    overflow: hidden;
+  }
+
+  &__option {
+    padding: .5rem 1rem;
+    cursor: pointer;
+    transition: background-color var(--transition), color var(--transition);
+
+    @include hover {
+      background-color: var(--border-color);
+      background-color: var(--color-violet);
+      color: var(--font-color-secondary);
+    }
+  }
+}

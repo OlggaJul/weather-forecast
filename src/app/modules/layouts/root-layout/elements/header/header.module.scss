@@ -1,0 +1,58 @@
+.header {
+  padding-top: 1rem;
+
+  &__inner {
+    height: 25rem;
+    display: flex;
+    justify-content: flex-end;
+
+    border-radius: .8rem;
+    background: linear-gradient(180deg, #505EF6E6 0%, #D798F9E6 100%);
+    overflow: hidden;
+  }
+
+  &__logo {
+    width: 10rem;
+    height: 10rem;
+  }
+
+  &__decor {
+    position: relative;
+    height: 100%;
+    width: 50%;
+
+    border-left: 1px solid #fff;
+  }
+
+  &__decor_icon {
+    position: absolute;
+    bottom: 1.4rem;
+    right: 0;
+  }
+
+  &__decor_layer_one {
+    position: absolute;
+    bottom: 0;
+    right: -8rem;
+    width: 100%;
+    z-index: 1;
+
+    & svg {
+      height: 6rem;
+      width: 100%;
+    }
+  }
+
+  &__decor_layer_two {
+    position: absolute;
+    bottom: 0;
+    right: -8rem;
+    width: 100%;
+    z-index: 2;
+
+    & svg {
+      height: 5rem;
+      width: 100%;
+    }
+  }
+}

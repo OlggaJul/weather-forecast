@@ -1,0 +1,12 @@
+.home {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: var(--gap-medium);
+
+
+  &__trip_list {
+    display: grid;
+    gap: var(--gap-medium);
+  }
+
+}
