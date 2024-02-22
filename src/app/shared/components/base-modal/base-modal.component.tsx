@@ -16,13 +16,23 @@ export const BaseModalComponent: FC<Readonly<IBaseModal>> = () => {
 
   //return
   return (
-    <div className={styles.base_modal}>
-      <div className={styles.base_modal__box}>
+    <section
+      className={styles.base_modal}
+      onClick={() => handleChangeModalStore({ modalComponent: null })}
+    >
+      <div
+        className={styles.base_modal__box}
+        onClick={(e) => {
+          e.stopPropagation()
+        }}
+      >
         <div className={styles.base_modal__header}>
           <p>Create a new trip</p>
 
           <div
-            onClick={() => handleChangeModalStore({ modalComponent: null })}
+            onClick={(e) => {
+              handleChangeModalStore({ modalComponent: null })
+            }}
             className={styles.base_modal__close_btn}
           >
             <IconClose />
@@ -31,12 +41,7 @@ export const BaseModalComponent: FC<Readonly<IBaseModal>> = () => {
 
         <div className={styles.base_modal__main}>{modalComponent}</div>
       </div>
-
-      <div
-        className={styles.base_modal__background}
-        onClick={() => handleChangeModalStore({ modalComponent: null })}
-      />
-    </div>
+    </section>
   )
 }
 export default BaseModalComponent

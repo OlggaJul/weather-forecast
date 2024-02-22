@@ -1,0 +1,31 @@
+.countdown {
+  &__clock {
+    display: grid;
+    grid-template-columns: repeat(4, 6rem);
+    gap: 1rem;
+  }
+
+  &__clock_item {
+    display: grid;
+    grid-gap: .4rem;
+    text-align: center;
+
+    & span {
+      font-size: 1.2rem;
+      //color: #202124;
+    }
+  }
+
+  &__clock_value {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: .4rem;
+    backdrop-filter: blur(10);
+
+    font-weight: 800;
+  }
+}

@@ -18,7 +18,7 @@ const RootLayoutComponent: FC<Readonly<IRootLayoutComponent>> = ({ children }) =
 
   // return
   return (
-    <body id={'body'} className={styles.root_layout}>
+    <body className={styles.root_layout}>
       <HeaderComponent />
 
       <main className={styles.root_layout__inner}>{children}</main>

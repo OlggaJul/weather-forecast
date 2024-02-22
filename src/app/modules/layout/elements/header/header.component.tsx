@@ -1,13 +1,9 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 
-import {
-  IconBg1,
-  IconBg2,
-  IconHeaderBg,
-  IconRainbow,
-  IconRome,
-  IconSydney,
-} from '@/app/shared/icons'
+import { InputComponent, SelectComponent } from '@/app/shared/components'
+import { sort_options } from '@/app/shared/constants'
+import { IconHeaderBg, IconSearch } from '@/app/shared/icons'
+import { useGlobalStore } from '@/app/shared/stores'
 
 import styles from './header.module.scss'
 
@@ -16,28 +12,42 @@ interface IHeader {}
 
 //component
 export const HeaderComponent: FC<Readonly<IHeader>> = () => {
+  const [sortRequest, setSortRequest] = useState('')
+
+  const handleChangeGlobalStore = useGlobalStore((state) => state.handleChangeGlobalStore)
+  const searchRequest = useGlobalStore((state) => state.searchRequest)
+
   //return
   return (
     <header className={`${styles.header} container`}>
       <div className={styles.header__inner}>
+        <div className={styles.header__setting_panel}>
+          <div className={styles.header__search}>
+            <InputComponent
+              label={'enter search request'}
+              placeholder={'search'}
+              onChange={(e) => handleChangeGlobalStore({ searchRequest: e.target.value })}
+              value={searchRequest}
+              iconComponent={<IconSearch />}
+            />
+          </div>
+
+          <div className={styles.header__sort}>
+            <SelectComponent
+              value={sortRequest}
+              onChange={setSortRequest}
+              label={'Sort by'}
+              placeholder={'Select sort type'}
+              options={sort_options}
+            />
+          </div>
+        </div>
+
         <div className={styles.header__decor}>
           <div className={`${styles.header__decor_icon}`}>
             <IconHeaderBg />
           </div>
-
-          <div className={styles.header__decor_layer_one}>
-            <IconBg1 />
-          </div>
-
-          <div className={styles.header__decor_layer_two}>
-            <IconBg2 />
-          </div>
         </div>
-        <div className={styles.header__box}></div>
-        {/*<div className={styles.header__logo}>*/}
-        {/*  <IconRainbow />*/}
-        {/*</div>*/}
-        <div className={styles.header__box}></div>
       </div>
     </header>
   )

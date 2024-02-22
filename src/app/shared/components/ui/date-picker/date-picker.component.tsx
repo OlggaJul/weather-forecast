@@ -2,9 +2,9 @@
 
 import moment from 'moment/moment'
 
-import { FC, useEffect, useRef, useState } from 'react'
+import { FC, useRef, useState } from 'react'
 
-import { ButtonComponent, InputComponent } from '@/app/shared/components'
+import { ButtonComponent } from '@/app/shared/components'
 import { IconArrowDown, IconCalendar } from '@/app/shared/icons'
 
 import styles from './date-picker.module.scss'
@@ -29,8 +29,6 @@ const DatePicker: FC<IDatePicker> = ({ value, onChange, errorMessage, label, pla
 
   const [currentDate, setCurrentDate] = useState(moment())
   const [activeOptions, setActiveOptions] = useState(false)
-
-  // const [selectedDate, setsSelectedDate] = useState<Moment | null>(null)
 
   const firstDayOfMonth = currentDate.clone().startOf('month')
 

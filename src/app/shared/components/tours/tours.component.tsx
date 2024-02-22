@@ -13,24 +13,42 @@ interface ITours {}
 export const ToursComponent: FC<Readonly<ITours>> = () => {
   const handleChangeModalStore = useModalStore((state) => state.handleChangeModalStore)
   const tours = useGlobalStore((state) => state.tours)
+  const searchRequest = useGlobalStore((state) => state.searchRequest)
 
   console.log('tours', tours)
+
+  const getPreparedList = () => {
+    const preparedTours = tours.filter((item) =>
+      item.city.name.toLowerCase().includes(searchRequest.toLowerCase()),
+    )
+
+    return preparedTours.length ? preparedTours : []
+  }
 
   //return
   return (
     <div className={styles.tours}>
       <h2 className={styles.tours__title}>Planned trips</h2>
 
-      {/*<div className={styles.tours__list}>*/}
       <div className={styles.tours__cards}>
-        {tours?.map((item) => <TripCardComponent key={item.city.id} trip={item} />)}
+        {searchRequest.length ? (
+          getPreparedList().length ? (
+            getPreparedList().map((item) => <TripCardComponent key={item.city.id} trip={item} />)
+          ) : (
+            <p className={styles.tours__no_result}>
+              No trips found for this request. It's time to plan one!
+            </p>
+          )
+        ) : (
+          tours?.map((item) => <TripCardComponent key={item.city.id} trip={item} />)
+        )}
       </div>
-      {/*</div>*/}
 
       <button
         onClick={() => handleChangeModalStore({ modalComponent: <NewTripFormComponent /> })}
         className={styles.tours__create_btn}
       >
+        <span>+</span>
         add trip
       </button>
     </div>

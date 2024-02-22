@@ -29,7 +29,7 @@ export const InputComponent: FC<Readonly<IInput>> = ({
       <p className={styles.input__label}>{label}</p>
 
       <div className={styles.input__wrapper}>
-        {iconPosition === 'start' && <div className={`${styles.input__icon}`}>{iconComponent}</div>}
+        <div className={`${styles.input__icon}`}>{iconComponent}</div>
 
         <input
           onChange={onChange}
@@ -38,8 +38,6 @@ export const InputComponent: FC<Readonly<IInput>> = ({
           type='text'
           placeholder={placeholder}
         />
-
-        {iconPosition === 'end' && <div className={`${styles.input__icon}`}>{iconComponent}</div>}
       </div>
 
       {errorMessage && <p className={styles.input__error}>{errorMessage}</p>}

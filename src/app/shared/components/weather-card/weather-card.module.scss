@@ -1,6 +1,7 @@
 .weather_card {
-  width: 12rem;
+  width: 16rem;
   padding: 2rem 1rem;
+  flex-shrink: 0;
   display: grid;
   justify-content: center;
   align-items: center;

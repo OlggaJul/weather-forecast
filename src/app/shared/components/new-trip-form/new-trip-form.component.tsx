@@ -7,7 +7,8 @@ import { FC } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
 import { ButtonComponent, DatePicker, SelectComponent } from '@/app/shared/components'
-import { ITourInfo } from '@/app/shared/interfaces/interfaces'
+import { cities } from '@/app/shared/constants'
+import { ITourInfo } from '@/app/shared/interfaces'
 import { useGlobalStore, useModalStore } from '@/app/shared/stores/zustand'
 
 import styles from './new-trip-form.module.scss'
@@ -25,7 +26,7 @@ export const NewTripFormComponent: FC<Readonly<INewTripForm>> = () => {
   const checkDateValidity = (startDate: Moment, endDate: Moment) => {
     if (startDate.diff(moment(), 'hours') > 360) {
       setError('start_date', {
-        message: 'Invalid Start Date',
+        message: 'Please choose a date from the upcoming 15 days',
       })
 
       return
@@ -33,7 +34,7 @@ export const NewTripFormComponent: FC<Readonly<INewTripForm>> = () => {
 
     if (endDate.diff(moment(), 'hours') > 360) {
       setError('end_date', {
-        message: 'Invalid End Date',
+        message: 'Please choose a date from the upcoming 15 days',
       })
 
       return
@@ -48,6 +49,7 @@ export const NewTripFormComponent: FC<Readonly<INewTripForm>> = () => {
   }
   const submitForm = (formValues: any) => {
     checkDateValidity(formValues.start_date, formValues.end_date)
+
     const newTrip: ITourInfo = {
       city: {
         name: formValues.city,
@@ -56,7 +58,9 @@ export const NewTripFormComponent: FC<Readonly<INewTripForm>> = () => {
       start_date: formValues.start_date,
       end_date: formValues.end_date,
     }
+
     handleChangeGlobalStore({ tours: [...tours, newTrip] })
+    handleChangeModalStore({ modalComponent: null })
   }
 
   //return
@@ -73,6 +77,7 @@ export const NewTripFormComponent: FC<Readonly<INewTripForm>> = () => {
               errorMessage={error?.message}
               label={'Please, select a city'}
               placeholder={'Select a city'}
+              options={cities}
             />
           )}
           rules={{

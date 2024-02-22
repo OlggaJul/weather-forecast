@@ -5,7 +5,7 @@ import moment from 'moment/moment'
 import { FC } from 'react'
 
 import { ImageBerlin } from '@/app/shared/images'
-import { ITourInfo } from '@/app/shared/interfaces/interfaces'
+import { ITourInfo } from '@/app/shared/interfaces'
 import { useGlobalStore } from '@/app/shared/stores/zustand'
 
 import styles from './trip-card.module.scss'

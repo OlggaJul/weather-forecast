@@ -1,8 +1,8 @@
-import moment from 'moment'
+import moment from 'moment/moment'
 
 import { FC } from 'react'
 
-import { ITourInfo } from '@/app/shared/interfaces/interfaces'
+import { ITourInfo } from '@/app/shared/interfaces'
 import { useGetWeatherForecastQuery } from '@/app/shared/stores/redux/weather-forecast-api'
 
 import WeatherCardComponent from '../weather-card/weather-card.component'
@@ -18,26 +18,24 @@ interface IForecast {
 export const ForecastComponent: FC<Readonly<IForecast>> = ({ selectedTour }) => {
   const { data, isLoading } = useGetWeatherForecastQuery({
     city: selectedTour.city.name,
-    start_date: selectedTour.start_date,
-    end_date: selectedTour.end_date,
+    start_date: moment(selectedTour.start_date)?.toISOString(),
+    end_date: moment(selectedTour.end_date)?.toISOString(),
   })
 
   //return
   return (
     <section className={styles.forecast}>
-      <div className={styles.forecast__title}>
-        {`Weather forecast for ${selectedTour.city.name}`}
-      </div>
+      <h2 className={styles.forecast__title}>{`Weather forecast for ${selectedTour.city.name}`}</h2>
 
       {isLoading ? (
         <p>loading</p>
       ) : (
         <div className={styles.forecast__cards}>
-          {data.days.map((day: any) => (
+          {data?.days?.map((day: any) => (
             <WeatherCardComponent
               key={day}
               date={day.datetime}
-              iconType={day.icon}
+              icon={day.icon}
               tempMax={day.tempmax}
               tempMin={day.tempmin}
             />

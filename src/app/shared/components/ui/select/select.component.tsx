@@ -9,13 +9,12 @@ import styles from './select.module.scss'
 //interface
 interface ISelect {
   value: any
+  onChange: (value: any) => void
   label?: string
   placeholder?: string
-  onChange: (value: any) => void
   errorMessage?: string
+  options: string[]
 }
-
-const cities = ['Lutsk', 'Lviv', 'Kyiv', 'Rivne']
 
 //component
 export const SelectComponent: FC<Readonly<ISelect>> = ({
@@ -24,6 +23,7 @@ export const SelectComponent: FC<Readonly<ISelect>> = ({
   placeholder,
   errorMessage,
   label,
+  options,
 }) => {
   const [isOptionsVisible, setIsOptionsVisible] = useState(false)
 
@@ -50,7 +50,7 @@ export const SelectComponent: FC<Readonly<ISelect>> = ({
           className={`${styles.select__options_container} ${isOptionsVisible && styles.visible}`}
         >
           <div className={styles.select__options_inner}>
-            {cities.map((city) => (
+            {options?.map((city) => (
               <div
                 onClick={() => {
                   onChange(city)
