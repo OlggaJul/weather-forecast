@@ -8,7 +8,8 @@ interface IState {
   tours: ITourInfo[]
   selectedTourId: string
   searchRequest: string
-  selectedSortOrder: ISelectOptions
+  selectedSortOrder: ISelectOptions | null
+  userName: string | null
 }
 
 interface IStore extends IState {
@@ -23,7 +24,8 @@ export const useGlobalStore = create<IStore>()(
         tours: [initTour],
         selectedTourId: initTour.id,
         searchRequest: '',
-        selectedSortOrder: sort_options[2],
+        selectedSortOrder: null,
+        userName: null,
         handleChangeGlobalStore: (value) => set((state) => ({ ...state, ...value })),
       }),
       { name: 'global_store', version: 1 },

@@ -1,8 +1,10 @@
+import { signIn, useSession } from 'next-auth/react'
+
 import { FC } from 'react'
 
 import { InputComponent, SelectComponent } from '@/app/shared/components'
 import { sort_options } from '@/app/shared/constants'
-import { IconHeader, IconSearch } from '@/app/shared/icons'
+import { IconGoogle, IconHeader, IconSearch } from '@/app/shared/icons'
 import { useGlobalStore } from '@/app/shared/stores'
 
 import styles from './header.module.scss'
@@ -15,6 +17,9 @@ export const HeaderComponent: FC<Readonly<IHeader>> = () => {
   const handleChangeGlobalStore = useGlobalStore((state) => state.handleChangeGlobalStore)
   const searchRequest = useGlobalStore((state) => state.searchRequest)
   const selectedSortOrder = useGlobalStore((state) => state.selectedSortOrder)
+  const userName = useGlobalStore((state) => state.userName)
+  const { data: session } = useSession()
+  console.log(session, 'SESSSSION')
 
   //return
   return (
@@ -40,6 +45,22 @@ export const HeaderComponent: FC<Readonly<IHeader>> = () => {
               options={sort_options}
             />
           </div>
+
+          {session?.user?.name ? (
+            <>
+              <div className={styles.header__greet}>
+                Hello, <br />
+                {session?.user?.name}!
+              </div>
+            </>
+          ) : (
+            <div className={styles.header__sign_in} onClick={() => signIn('google')}>
+              Sign in with
+              <IconGoogle />
+            </div>
+          )}
+
+          <div>{userName}</div>
         </div>
 
         <div className={styles.header__decor}>

@@ -3,6 +3,7 @@ import GoogleProvider from 'next-auth/providers/google'
 
 const GOOGLE_ID = process.env.GOOGLE_ID!
 const GOOGLE_SECRET = process.env.GOOGLE_SECRET!
+const NEXT_AUTH_SECRET = process.env.NEXTAUTH_SECRET
 
 export const options: NextAuthOptions = {
   providers: [
@@ -13,9 +14,8 @@ export const options: NextAuthOptions = {
   ],
   callbacks: {
     async signIn({ user, account, profile }) {
-      console.log(user, account, profile)
       return true
     },
   },
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: NEXT_AUTH_SECRET,
 }

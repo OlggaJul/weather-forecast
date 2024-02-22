@@ -4,6 +4,50 @@
   grid-template-columns: 1fr auto;
   grid-gap: var(--gap-small) var(--gap-medium-small);
 
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: var(--gap-small);
+  }
+
+  &__btn {
+    width: 3rem;
+    height: 3rem;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--picker-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 0.4rem;
+
+    cursor: pointer;
+    transform: rotate(-90deg);
+    transition: border-color var(--transition), color var(--transition);
+
+    @include hover {
+      border-color: var(--color-violet);
+      color: var(--color-violet);
+    }
+
+    & svg {
+      width: 2.4rem;
+      height: 2.4rem;
+    }
+
+    &.btn_prev {
+      transform: rotate(90deg);
+    }
+  }
+
+
   &__list {
     grid-row: 2;
   }
@@ -18,7 +62,9 @@
     grid-row: 2;
     display: flex;
     gap: var(--gap-medium);
+
     overflow: scroll;
+    scroll-behavior: smooth;
   }
 
   &__no_result {
@@ -26,6 +72,7 @@
     font-size: 4.8rem;
     font-weight: 800;
     align-self: center;
+    text-align: center;
     color: var(--border-color);
   }
 
