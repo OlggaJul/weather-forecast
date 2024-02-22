@@ -1,8 +1,10 @@
 .trip_card {
   flex-shrink: 0;
-  width: 20rem;
+  width: 22.6rem;
   cursor: pointer;
   transition: border-color var(--transition);
+  display: grid;
+  grid-template-rows: 1fr auto;
 
   &.active {
     cursor: default;

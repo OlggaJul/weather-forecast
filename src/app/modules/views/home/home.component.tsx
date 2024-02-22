@@ -14,7 +14,7 @@ export const HomeComponent: FC<Readonly<IHome>> = () => {
   const tours = useGlobalStore((state) => state.tours)
   const selectedTourId = useGlobalStore((state) => state.selectedTourId)
 
-  const selectedTourData = tours.find((item) => item.city.id === selectedTourId)
+  const selectedTourData = tours.find((item) => item.id === selectedTourId)
   //return
   return (
     <section className={`${styles.home} container`}>

@@ -10,5 +10,6 @@
   &__trip_list {
     display: grid;
     gap: var(--gap-medium);
+    grid-template-rows: auto 1fr;
   }
 }

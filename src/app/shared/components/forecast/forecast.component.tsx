@@ -27,21 +27,21 @@ export const ForecastComponent: FC<Readonly<IForecast>> = ({ selectedTour }) => 
     <section className={styles.forecast}>
       <h2 className={styles.forecast__title}>{`Weather forecast for ${selectedTour.city.name}`}</h2>
 
-      {isLoading ? (
-        <p>loading</p>
-      ) : (
-        <div className={styles.forecast__cards}>
-          {data?.days?.map((day: any) => (
-            <WeatherCardComponent
-              key={day}
-              date={day.datetime}
-              icon={day.icon}
-              tempMax={day.tempmax}
-              tempMin={day.tempmin}
-            />
-          ))}
-        </div>
-      )}
+      {/*{isLoading ? (*/}
+      {/*  <p>loading</p>*/}
+      {/*) : (*/}
+      {/*  <div className={styles.forecast__cards}>*/}
+      {/*    {data?.days?.map((day: any) => (*/}
+      {/*      <WeatherCardComponent*/}
+      {/*        key={day}*/}
+      {/*        date={day.datetime}*/}
+      {/*        icon={day.icon}*/}
+      {/*        tempMax={day.tempmax}*/}
+      {/*        tempMin={day.tempmin}*/}
+      {/*      />*/}
+      {/*    ))}*/}
+      {/*  </div>*/}
+      {/*)}*/}
     </section>
   )
 }

@@ -1,8 +1,8 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 
 import { InputComponent, SelectComponent } from '@/app/shared/components'
 import { sort_options } from '@/app/shared/constants'
-import { IconHeaderBg, IconSearch } from '@/app/shared/icons'
+import { IconHeader, IconSearch } from '@/app/shared/icons'
 import { useGlobalStore } from '@/app/shared/stores'
 
 import styles from './header.module.scss'
@@ -12,10 +12,9 @@ interface IHeader {}
 
 //component
 export const HeaderComponent: FC<Readonly<IHeader>> = () => {
-  const [sortRequest, setSortRequest] = useState('')
-
   const handleChangeGlobalStore = useGlobalStore((state) => state.handleChangeGlobalStore)
   const searchRequest = useGlobalStore((state) => state.searchRequest)
+  const selectedSortOrder = useGlobalStore((state) => state.selectedSortOrder)
 
   //return
   return (
@@ -24,8 +23,8 @@ export const HeaderComponent: FC<Readonly<IHeader>> = () => {
         <div className={styles.header__setting_panel}>
           <div className={styles.header__search}>
             <InputComponent
-              label={'enter search request'}
-              placeholder={'search'}
+              label={'Search your trip'}
+              placeholder={'Search'}
               onChange={(e) => handleChangeGlobalStore({ searchRequest: e.target.value })}
               value={searchRequest}
               iconComponent={<IconSearch />}
@@ -34,8 +33,8 @@ export const HeaderComponent: FC<Readonly<IHeader>> = () => {
 
           <div className={styles.header__sort}>
             <SelectComponent
-              value={sortRequest}
-              onChange={setSortRequest}
+              value={selectedSortOrder}
+              onChange={(e) => handleChangeGlobalStore({ selectedSortOrder: e })}
               label={'Sort by'}
               placeholder={'Select sort type'}
               options={sort_options}
@@ -44,9 +43,7 @@ export const HeaderComponent: FC<Readonly<IHeader>> = () => {
         </div>
 
         <div className={styles.header__decor}>
-          <div className={`${styles.header__decor_icon}`}>
-            <IconHeaderBg />
-          </div>
+          <IconHeader />
         </div>
       </div>
     </header>

@@ -1,13 +1,14 @@
 import { create } from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
 
-import { initTour } from '@/app/shared/constants'
-import { ITourInfo } from '@/app/shared/interfaces'
+import { initTour, sort_options } from '@/app/shared/constants'
+import { ISelectOptions, ITourInfo } from '@/app/shared/interfaces'
 
 interface IState {
   tours: ITourInfo[]
   selectedTourId: string
   searchRequest: string
+  selectedSortOrder: ISelectOptions
 }
 
 interface IStore extends IState {
@@ -20,8 +21,9 @@ export const useGlobalStore = create<IStore>()(
     persist(
       (set) => ({
         tours: [initTour],
-        selectedTourId: initTour.city.id,
+        selectedTourId: initTour.id,
         searchRequest: '',
+        selectedSortOrder: sort_options[2],
         handleChangeGlobalStore: (value) => set((state) => ({ ...state, ...value })),
       }),
       { name: 'global_store', version: 1 },

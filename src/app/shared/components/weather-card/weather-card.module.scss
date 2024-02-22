@@ -12,7 +12,6 @@
   background: linear-gradient(110deg, rgba(255, 255, 255, 0.5) -9%, rgba(255, 255, 255, 0) 114%);
   backdrop-filter: blur(50px);
 
-
   cursor: pointer;
 
   &__weekday {
@@ -26,15 +25,17 @@
   }
 
   &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     & svg {
       width: 8rem;
     }
-
   }
 
   &__forecast {
     text-align: center;
     font-weight: 500;
   }
-
 }

@@ -23,9 +23,9 @@ export const TripCardComponent: FC<Readonly<ITripCard>> = ({ trip }) => {
   //return
   return (
     <div
-      className={`${styles.trip_card} ${selectedTourId === trip.city.id ? styles.active : ''}`}
+      className={`${styles.trip_card} ${selectedTourId === trip.id ? styles.active : ''}`}
       onClick={() => {
-        handleChangeGlobalStore({ selectedTourId: trip.city.id })
+        handleChangeGlobalStore({ selectedTourId: trip.id })
       }}
     >
       <div className={styles.trip_card__photo_wrapper}>

@@ -96,7 +96,7 @@ const DatePicker: FC<IDatePicker> = ({ value, onChange, errorMessage, label, pla
                 type='button'
                 onClick={(e) => {
                   e.stopPropagation()
-                  changePeriod(-1, 'month')
+                  changePeriod(1, 'month')
                 }}
                 className={`${styles.date_picker__arrow} ${styles.arrow_next}`}
               >

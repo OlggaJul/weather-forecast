@@ -143,6 +143,10 @@
     font-size: 1.6rem;
     text-align: inherit;
 
+    @include tablet {
+      width: 30rem;
+    }
+
     &__bg {
       content: '';
       position: fixed;

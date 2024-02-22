@@ -13,7 +13,7 @@ interface ISelect {
   label?: string
   placeholder?: string
   errorMessage?: string
-  options: string[]
+  options: { value: string; key: string }[]
 }
 
 //component
@@ -37,7 +37,7 @@ export const SelectComponent: FC<Readonly<ISelect>> = ({
           className={`${styles.select__field} ${value && styles.filled} ${isOptionsVisible && styles.opened}`}
           onClick={() => setIsOptionsVisible(!isOptionsVisible)}
         >
-          <p className={styles.select__selectedItem}>{value ? value : placeholder}</p>
+          <p className={styles.select__selectedItem}>{value ? value?.value : placeholder}</p>
 
           <div className={`${styles.select__icon} ${isOptionsVisible && styles.opened}`}>
             <IconArrowDown />
@@ -50,16 +50,16 @@ export const SelectComponent: FC<Readonly<ISelect>> = ({
           className={`${styles.select__options_container} ${isOptionsVisible && styles.visible}`}
         >
           <div className={styles.select__options_inner}>
-            {options?.map((city) => (
+            {options?.map((option) => (
               <div
                 onClick={() => {
-                  onChange(city)
+                  onChange(option)
                   setIsOptionsVisible(false)
                 }}
                 className={styles.select__option}
-                key={city}
+                key={option.key}
               >
-                {city}
+                {option.value}
               </div>
             ))}
           </div>

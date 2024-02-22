@@ -28,16 +28,14 @@ export const NewTripFormComponent: FC<Readonly<INewTripForm>> = () => {
       setError('start_date', {
         message: 'Please choose a date from the upcoming 15 days',
       })
-
-      return
+      return false
     }
 
     if (endDate.diff(moment(), 'hours') > 360) {
       setError('end_date', {
         message: 'Please choose a date from the upcoming 15 days',
       })
-
-      return
+      return false
     }
 
     if (startDate.isAfter(endDate)) {
@@ -45,22 +43,25 @@ export const NewTripFormComponent: FC<Readonly<INewTripForm>> = () => {
         message:
           'Hmm, it looks like your trip might end before it starts! Double-check your dates to ensure the event duration is correct.',
       })
+      return false
     }
+
+    return true
   }
   const submitForm = (formValues: any) => {
-    checkDateValidity(formValues.start_date, formValues.end_date)
-
-    const newTrip: ITourInfo = {
-      city: {
-        name: formValues.city,
+    if (checkDateValidity(formValues.start_date, formValues.end_date)) {
+      const newTrip: ITourInfo = {
+        city: {
+          name: formValues.city.value,
+        },
         id: uid(),
-      },
-      start_date: formValues.start_date,
-      end_date: formValues.end_date,
-    }
+        start_date: formValues.start_date,
+        end_date: formValues.end_date,
+      }
 
-    handleChangeGlobalStore({ tours: [...tours, newTrip] })
-    handleChangeModalStore({ modalComponent: null })
+      handleChangeGlobalStore({ tours: [newTrip, ...tours], selectedTourId: newTrip.id })
+      handleChangeModalStore({ modalComponent: null })
+    }
   }
 
   //return
