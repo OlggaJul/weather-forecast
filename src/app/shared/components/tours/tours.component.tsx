@@ -36,7 +36,7 @@ export const ToursComponent: FC<Readonly<ITours>> = () => {
             getPreparedList().map((item) => <TripCardComponent key={item.city.id} trip={item} />)
           ) : (
             <p className={styles.tours__no_result}>
-              No trips found for this request. It's time to plan one!
+              No trips found for this request. It&apos;s time to plan one!
             </p>
           )
         ) : (
