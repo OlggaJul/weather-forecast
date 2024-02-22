@@ -17,7 +17,7 @@ interface IRootLayout {
 }
 
 // component
-const RootLayout: FC<Readonly<IRootLayout>> = async ({ children, pageProps }) => {
+const RootLayout: FC<any> = async ({ children, pageProps }) => {
   // return
   return (
     <SessionProvider session={pageProps}>
