@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
 
-import { initTour, sort_options } from '@/app/shared/constants'
+import { initTour } from '@/app/shared/constants'
 import { ISelectOptions, ITourInfo } from '@/app/shared/interfaces'
 
 interface IState {
@@ -22,7 +22,7 @@ export const useGlobalStore = create<IStore>()(
     persist(
       (set) => ({
         tours: [initTour],
-        selectedTourId: initTour.id,
+        selectedTourId: '1',
         searchRequest: '',
         selectedSortOrder: null,
         userName: null,

@@ -1,5 +1,4 @@
 import moment from 'moment/moment'
-import { uid } from 'uid'
 
 import { ISelectOptions, ITourInfo } from '@/app/shared/interfaces'
 
@@ -17,7 +16,7 @@ export const initTour: ITourInfo = {
   city: {
     name: 'Tokyo',
   },
-  id: uid(),
+  id: '1',
   start_date: moment('27.02.24', 'DD.MM.YYYY'),
   end_date: moment('01.03.24', 'DD.MM.YYYY'),
 }
