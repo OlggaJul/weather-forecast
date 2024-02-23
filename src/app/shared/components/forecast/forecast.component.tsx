@@ -33,7 +33,7 @@ export const ForecastComponent: FC<Readonly<IForecast>> = ({ selectedTour }) => 
         <div className={styles.forecast__cards}>
           {data?.days?.map((day: any) => (
             <WeatherCardComponent
-              key={day}
+              key={day.datetime}
               date={day.datetime}
               icon={day.icon}
               tempMax={day.tempmax}

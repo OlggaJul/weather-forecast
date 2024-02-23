@@ -1,1 +1,7 @@
-export { default as ImageBerlin } from './berlin.webp'
+export { default as ImageAbuDhabi } from './Abu-Dhabi.jpg'
+export { default as ImageAmsterdam } from './amsterdam.jpeg'
+export { default as ImageCairo } from './egypt-cairo.jpg'
+export { default as ImageLondon } from './london.jpeg'
+export { default as ImageParis } from './paris.webp'
+export { default as ImageRome } from './rome.jpeg'
+export { default as ImageTokyo } from './tokio.jpg'

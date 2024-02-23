@@ -12,8 +12,11 @@
 
     & span {
       font-size: 1.2rem;
-      //color: #202124;
     }
+  }
+
+  &__past_text{
+    text-align: center;
   }
 
   &__clock_value {

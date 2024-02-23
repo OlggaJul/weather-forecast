@@ -26,6 +26,11 @@ export const CountdownComponent: FC<Readonly<ICountdown>> = ({ targetDate }) => 
     )
   }
 
+  const getDaysRemaining = () => {
+    const duration = moment.duration(moment(targetDate).diff(moment()))
+    return +moment(duration.asDays())
+  }
+
   useEffect(() => {
     const countdownInterval = setInterval(updateCountdown, 1000)
 
@@ -37,12 +42,12 @@ export const CountdownComponent: FC<Readonly<ICountdown>> = ({ targetDate }) => 
     <div className={styles.countdown}>
       {countdown === 'past' ? (
         <p className={styles.countdown__past_text}>
-          It seems your journey has already begun, <br /> have a good weather!
+          It seems your journey has already begun. <br /> Have a good weather!
         </p>
       ) : (
         <div className={`${styles.countdown__clock} ${secondaryFont.className}`}>
           <div className={styles.countdown__clock_item}>
-            <div className={styles.countdown__clock_value}>{countdown.slice(0, 2)}</div>
+            <div className={styles.countdown__clock_value}>{getDaysRemaining()}</div>
             <span>days</span>
           </div>
 

@@ -3,6 +3,7 @@ import { Moment } from 'moment/moment'
 export interface ITourInfo {
   city: {
     name: string
+    image: any
   }
   id: string
   start_date: Moment

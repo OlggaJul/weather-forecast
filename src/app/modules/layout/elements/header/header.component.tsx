@@ -19,7 +19,6 @@ export const HeaderComponent: FC<Readonly<IHeader>> = () => {
   const selectedSortOrder = useGlobalStore((state) => state.selectedSortOrder)
   const userName = useGlobalStore((state) => state.userName)
   const { data: session } = useSession()
-  console.log(session, 'SESSSSION')
 
   //return
   return (

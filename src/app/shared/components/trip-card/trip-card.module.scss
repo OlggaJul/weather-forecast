@@ -10,10 +10,6 @@
     cursor: default;
     pointer-events: none;
 
-    & .trip_card__content {
-      border-color: var(--color-violet-dark);
-    }
-
     @include hover {
       & .trip_card__content {
         border-color: var(--color-violet-dark);
@@ -39,6 +35,10 @@
 
   &__photo {
     transition: transform var(--transition);
+
+    &.active {
+      transform: scale(1.2);
+    }
   }
 
   &__content {
@@ -50,7 +50,13 @@
     border-top: none;
 
     font-size: 1.6rem;
-    transition: border-color var(--transition);
+    transition: border-color var(--transition) color var(--transition);
+
+    &.active {
+      border-color: var(--color-violet-dark);
+      color: var(--color-violet-dark);
+      font-weight: 600;
+    }
   }
 
   &__title {

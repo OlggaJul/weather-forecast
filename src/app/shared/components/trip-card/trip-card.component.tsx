@@ -4,8 +4,8 @@ import moment from 'moment/moment'
 
 import { FC } from 'react'
 
-import { ImageBerlin } from '@/app/shared/images'
 import { ITourInfo } from '@/app/shared/interfaces'
+import { getCityPhoto } from '@/app/shared/services'
 import { useGlobalStore } from '@/app/shared/stores/zustand'
 
 import styles from './trip-card.module.scss'
@@ -30,8 +30,8 @@ export const TripCardComponent: FC<Readonly<ITripCard>> = ({ trip }) => {
     >
       <div className={styles.trip_card__photo_wrapper}>
         <Image
-          className={styles.trip_card__photo}
-          src={ImageBerlin}
+          className={`${styles.trip_card__photo} ${selectedTourId === trip.id ? styles.active : ''}`}
+          src={trip.city.image ? trip.city.image : getCityPhoto(trip.city.name)}
           alt={trip.city.name}
           fill
           sizes={'25vw'}
@@ -43,7 +43,9 @@ export const TripCardComponent: FC<Readonly<ITripCard>> = ({ trip }) => {
         />
       </div>
 
-      <div className={styles.trip_card__content}>
+      <div
+        className={`${styles.trip_card__content} ${selectedTourId === trip.id ? styles.active : ''}`}
+      >
         <p className={styles.trip_card__title}>{trip.city.name}</p>
 
         <p className={styles.trip_card__dates}>

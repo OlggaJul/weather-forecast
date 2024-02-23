@@ -1,5 +1,6 @@
 import moment from 'moment/moment'
 
+import { ImageTokyo } from '@/app/shared/images'
 import { ISelectOptions, ITourInfo } from '@/app/shared/interfaces'
 
 export const cities: ISelectOptions[] = [
@@ -15,6 +16,7 @@ export const cities: ISelectOptions[] = [
 export const initTour: ITourInfo = {
   city: {
     name: 'Tokyo',
+    image: ImageTokyo,
   },
   id: '1',
   start_date: moment('27.02.24', 'DD.MM.YYYY'),
