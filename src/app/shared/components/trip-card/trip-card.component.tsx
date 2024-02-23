@@ -5,7 +5,7 @@ import moment from 'moment/moment'
 import { FC } from 'react'
 
 import { ITourInfo } from '@/app/shared/interfaces'
-import { getCityPhoto } from '@/app/shared/services'
+import { getCityPhoto, shimmer } from '@/app/shared/services'
 import { useGlobalStore } from '@/app/shared/stores/zustand'
 
 import styles from './trip-card.module.scss'
@@ -40,6 +40,8 @@ export const TripCardComponent: FC<Readonly<ITripCard>> = ({ trip }) => {
             height: '100%',
             objectFit: 'cover',
           }}
+          placeholder={'blur'}
+          blurDataURL={`${shimmer(100, 100)}`}
         />
       </div>
 

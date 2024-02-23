@@ -6,8 +6,8 @@ import { secondaryFont } from '@/app/fonts'
 import { CountdownComponent } from '@/app/shared/components'
 import { ITourInfo } from '@/app/shared/interfaces'
 import { getWeatherIcon } from '@/app/shared/services'
-import { getCityIcon } from '@/app/shared/services/getCityIcon'
-import { useGetCurrentWeatherQuery } from '@/app/shared/stores/redux/current-weather-api'
+import { getCityIcon } from '@/app/shared/services'
+import { useGetCurrentWeatherQuery } from '@/app/shared/stores'
 
 import styles from './selected-card.module.scss'
 
