@@ -30,7 +30,7 @@ export const BaseModalComponent: FC<Readonly<IBaseModal>> = () => {
           <p>Create a new trip</p>
 
           <div
-            onClick={(e) => {
+            onClick={() => {
               handleChangeModalStore({ modalComponent: null })
             }}
             className={styles.base_modal__close_btn}

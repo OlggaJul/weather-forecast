@@ -15,7 +15,8 @@
 
   &__setting_panel {
     padding: 1rem 2rem;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--gap-medium);
 
     background-color: var(--bg-color-primary);
@@ -46,7 +47,7 @@
     }
   }
 
-  &__greet{
+  &__greet {
     align-self: center;
     color: var(--color-violet);
     font-weight: 500;

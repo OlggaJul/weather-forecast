@@ -1,5 +1,8 @@
-
 # Weather forecast for trips
+
+Weather Forecast is a Next.js web application that empowers users to plan and visualize their upcoming journeys with ease. It
+offers a seamless experience for managing trip details, viewing weather forecasts, and staying informed with countdown
+timers.
 
 ### Requirements
 
@@ -15,3 +18,6 @@
    ```sh
    yarn dev
    ```
+
+### Check out my project here: 
+https://weather-forecast-snowy-two.vercel.app/

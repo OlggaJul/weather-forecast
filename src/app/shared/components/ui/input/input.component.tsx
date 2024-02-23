@@ -7,7 +7,6 @@ interface IInput {
   value?: string
   label?: string
   placeholder?: string
-  iconPosition?: 'start' | 'end'
   onChange: (value: any) => void
   errorMessage?: string
   iconComponent?: ReactNode
@@ -18,7 +17,6 @@ export const InputComponent: FC<Readonly<IInput>> = ({
   value,
   label,
   placeholder,
-  iconPosition = 'end',
   onChange,
   errorMessage,
   iconComponent,
@@ -28,7 +26,7 @@ export const InputComponent: FC<Readonly<IInput>> = ({
     <div className={styles.input}>
       <p className={styles.input__label}>{label}</p>
 
-      <div className={styles.input__wrapper}>
+      <div className={`${styles.input__wrapper} ${value && styles.filled}`}>
         <div className={`${styles.input__icon}`}>{iconComponent}</div>
 
         <input

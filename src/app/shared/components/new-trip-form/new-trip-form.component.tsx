@@ -9,6 +9,7 @@ import { Controller, useForm } from 'react-hook-form'
 import { ButtonComponent, DatePicker, SelectComponent } from '@/app/shared/components'
 import { cities } from '@/app/shared/constants'
 import { ITourInfo } from '@/app/shared/interfaces'
+import { getCityPhoto } from '@/app/shared/services'
 import { useGlobalStore, useModalStore } from '@/app/shared/stores/zustand'
 
 import styles from './new-trip-form.module.scss'
@@ -53,6 +54,7 @@ export const NewTripFormComponent: FC<Readonly<INewTripForm>> = () => {
       const newTrip: ITourInfo = {
         city: {
           name: formValues.city.value,
+          image: getCityPhoto(formValues.city.value),
         },
         id: uid(),
         start_date: formValues.start_date,

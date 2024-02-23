@@ -58,8 +58,6 @@ export const HeaderComponent: FC<Readonly<IHeader>> = () => {
               <IconGoogle />
             </div>
           )}
-
-          <div>{userName}</div>
         </div>
 
         <div className={styles.header__decor}>

@@ -25,7 +25,11 @@ export const SelectedCardComponent: FC<Readonly<ISelectedCard>> = ({ selectedTou
   //return
   return (
     <div className={styles.selected_card}>
-      <div className={styles.selected_card__bg}>{getCityIcon(selectedTour.city.name)}</div>
+      <div
+        className={`${styles.selected_card__bg} ${(selectedTour.city.name === 'Amsterdam' || selectedTour.city.name === 'Abu Dhabi') && styles.special}`}
+      >
+        {getCityIcon(selectedTour.city.name)}
+      </div>
 
       <div className={styles.selected_card__content}>
         <p className={styles.selected_card__title}>{moment().format('dddd')}</p>

@@ -149,7 +149,7 @@ const DatePicker: FC<IDatePicker> = ({ value, onChange, errorMessage, label, pla
                 }}
                 key={day.format('YYYY-MM-DD')}
                 className={`${styles.date_picker__day}
-                   ${moment(value)?.isSame(day, 'day') && styles.selected}
+                   ${value && moment(value)?.isSame(day, 'day') && styles.selected}
                    ${moment().isSame(day, 'day') && styles.today}
                    ${moment(day).isBefore(moment(), 'day') && styles.disabled}
                    `}
